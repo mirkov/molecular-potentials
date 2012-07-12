@@ -1,0 +1,23 @@
+#+title: Molecular-potentials package
+
+* Summary
+  System for specifying molecular potential parameters and calculating
+  molecular potentials.
+
+  Included potentials
+  - [ ] Hard Sphere
+  - [X] Lennard-Jones 6-12
+  - [ ] Variable hard sphere
+  - [ ] Variable soft sphere
+    
+    
+  Methods:
+  - [ ] Potential calculations
+  - [ ] Lennard-Jones 6-12 for collisions of two different types of molecules
+
+* To do
+  Modify format of the [[file:lennard-jones-coeffs.dat][lennard-jones-coeffs.dat]] file.  Right now it is
+  based on a table from Bird & Lightfoot and contains Tc data.  I want
+  to remove unnecessary data and add fields for the data source.
+
+  

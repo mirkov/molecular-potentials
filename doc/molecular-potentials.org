@@ -1,0 +1,27 @@
+Common Lisp package for molecular potential models
+
+The package defines objects and methods for a few simple
+inter-molecular potential models.  The package has nothing to do with
+ab-initio calculations of molecular potentials.
+
+The package is used by the =collision-integrals= package for
+calculation of transport coefficients of rare gases.
+
+For each potential model, package provides the following:
+- Function =V(r)= for the potential
+- Object of base type molecular potential that stores the model
+  parameters.  The objects must return
+  - =sigma=, the characteristic diameter
+  - =epsilon/K=, the characteristic temperature
+
+The exception to this rule is the hard-sphere potential, which does
+not have a corresponding object.
+
+The function =V= is implemented as a generic function/method with
+call syntax
+#+begin_src lisp
+(V potential r)
+#+end_src
+where potential is either an object for a particular potential, or a
+scalar diameter for the hard-sphere potential.
+

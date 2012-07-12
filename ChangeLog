@@ -1,0 +1,64 @@
+2012-07-12  Mirko Vukovic  <mirko.vukovic@us.tel.com>
+
+	* lennard-jones-coeffs.dat: Added data for SiH4 from Table 4
+	Shashkov et al 2011 article.
+
+2011-09-12  Mirko Vukovic  <mirko.vukovic@us.tel.com>
+
+	* lennard-jones-coeffs.lisp (make-lennard-jones-6/12-potential):
+	Changed call convention to accept coefficients as arguments.  A
+	different routine will return an object based on a species
+	(make-species-lennard-jones-6/12-potential): new routine that
+	accepts the species and returns object with coefficients.
+
+	* object-setup.lisp (molecular-potential): Removed default value
+	for `epsilon/K'.  It will be set-up by individual objects
+
+	* lennard-jones-coeffs.lisp (print-object): Same modification as
+	in the hard-sphere print definition below
+
+	* hs-molecular-potential.lisp: New 'hard-sphere-potential' class
+	and helper routines.
+	(print-object): Fixed insiduous bug.  I was retreiving the slot
+	value of species, even if it was not bound.  This would cause an
+	error that would try to print the object again, and again, and
+	again ...
+
+2011-09-11  Mirko Vukovic  <mirko.vukovic@us.tel.com>
+
+	* object-setup.lisp (V): Modified documentation in light of new
+	specification of hard-sphere potential
+	(molecular-potential): Added `mass' and `species' slots.  Mass is
+	important for collision calculations.  Also changed accessors from
+	:accessor to :reader
+
+	* lennard-jones-coeffs.lisp (lennard-jones-6/12-potential):
+	Cleaned-up exported symbols.  From now on, other packages use the
+	object interface to obtain potential parameters.
+
+2011-09-10  Mirko Vukovic  <mirko.vukovic@us.tel.com>
+
+	* lennard-jones-coeffs.lisp (make-lennard-jones-6/12): Removing
+	the option to create a combined potential.  This is outside the
+	domain of this package, but in the domain of the
+	collision-integrals package.
+	(lennard-jones-6/12-potential): Renamed class `lennard-jones-6/12'
+	into more descriptive `lennard-jones-6/12-potential'
+	(print-object, describe-object): 
+
+2011-09-06  Mirko Vukovic  <mirko.vukovic@us.tel.com>
+
+	* lj-molecular-potential.lisp: Renamed `lj-coeffs' into
+	`lennard-jones-6/12' in the whole file
+
+	* lennard-jones-coeffs.lisp: Renamed `lj-coeffs' into
+	`lennard-jones-6/12' in the whole file
+
+2011-09-05  Mirko Vukovic  <mirko.vukovic@us.tel.com>
+
+	* lennard-jones-coeffs.lisp (lj-coeffs): Class inherits from new
+	base class, molecular-potentials
+
+	* generic-functions.lisp (molecular-potential): Added class
+	definition of molecular-potential
+	
